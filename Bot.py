@@ -4,6 +4,7 @@ import itertools
 from tqdm import tqdm
 import pickle
 import os
+from time import perf_counter
 
 N_GUESS = 15
 ALLOWED_GUESSES = "valid-wordle-words.txt"
@@ -68,12 +69,15 @@ class Bot:
     """
 
     def load_pickle(self):
+        time = perf_counter()
         if 'pattern_dict.p' in os.listdir('.'):
             print("pickleeee")
             pattern_dict = pickle.load(open('pattern_dict.p', 'rb'))
         else:
             pattern_dict = self.dictionary_matrix(self.all_words)
             pickle.dump(pattern_dict, open('pattern_dict.p', 'wb+'))
+        time = round(perf_counter() - time)
+        print("Loading time: ", time//60, "mins and ", time % 60, "seconds.")
         return pattern_dict
 
     # Matrix_maker is a the method that compares two words and returns a tuple of the result

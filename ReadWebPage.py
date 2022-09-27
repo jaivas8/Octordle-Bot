@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from time import sleep
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -15,6 +16,7 @@ class Game:
     # guessNum and guessResults are the number of guess thus far and the content of meaning of those guesses
     # board and boardNum correspond to the board we are currently solving
     def __init__(self):
+        # URL = "https://octordle.com/daily"
         URL = "https://octordle.com/daily-sequence"
         # URL = "https://octordle.com/free-sequence"
 
